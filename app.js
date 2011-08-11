@@ -13,4 +13,18 @@ app.get('/', function(req, res){
 	res.sendfile('page.html');	
 });
 
+var activeClients = 0;
+
+socket.on('connection', function(client){ 
+  activeClients +=1;
+  console.log(activeClients);
+  socket.broadcast({clients:activeClients})
+  client.on('disconnect', function(){clientDisconnect(client)});
+}); 
+
+function clientDisconnect(client){
+  activeClients -=1;
+  client.broadcast({clients:activeClients})
+}
+
 app.listen(3000);
