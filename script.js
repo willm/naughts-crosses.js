@@ -2,11 +2,7 @@ $(document).ready(
 			
 			function()
 			{
-				  $clientCounter = $("#client_count")
-
-				  var socket = new io.Socket(null, {port: 3000});
-				  socket.connect();
-				  socket.on('message', function(msg){msgReceived(msg)});			
+						
 			}
 		);
 		
@@ -17,7 +13,10 @@ $(document).ready(
 			colors = colors.reverse();
 		}
 		
-		function msgReceived(msg){
-		  $clientCounter.html(msg.clients);
-		}
+
+var socket = io.connect('http://localhost');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
 

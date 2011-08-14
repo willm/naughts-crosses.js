@@ -1,5 +1,5 @@
-var app = require('express').createServer();
-var socket = require('socket.io').listen(app);
+var app = require('express').createServer(),
+	io = require('socket.io').listen(app);
 
 require('jade');
 //app.set('view engine', 'jade');
@@ -13,18 +13,12 @@ app.get('/', function(req, res){
 	res.sendfile('page.html');	
 });
 
-var activeClients = 0;
 
-socket.on('connection', function(client){ 
-  activeClients +=1;
-  console.log(activeClients);
-  socket.broadcast({clients:activeClients})
-  client.on('disconnect', function(){clientDisconnect(client)});
-}); 
-
-function clientDisconnect(client){
-  activeClients -=1;
-  client.broadcast({clients:activeClients})
-}
+io.sockets.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
 
 app.listen(3000);
