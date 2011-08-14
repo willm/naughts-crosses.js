@@ -11,7 +11,8 @@
     "node": "~v0.4.9"
   },
   "dependencies": {
-     "socket.io-client": "0.7.4"
+     "socket.io-client": "0.7.4",
+     "express": "2.2.2"
 
 },
   "devDependencies": {}
