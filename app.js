@@ -19,6 +19,16 @@ socket.on('connection', function(client){
   activeClients +=1;
   console.log(activeClients);
   socket.broadcast({clients:activeClients})
+
+  client.on('save it', function(data){
+    //save the data
+    var result = false;
+    console.log('data saved? => ' + result);
+
+    client.emit('saved some data');
+    client.broadcast.emit('someone saved some data');
+  });
+
   client.on('disconnect', function(){clientDisconnect(client)});
 }); 
 
