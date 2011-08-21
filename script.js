@@ -1,22 +1,11 @@
-$(document).ready(
-			
-			function()
-			{
-						
-			}
-		);
-		
-		var colors = ['green','red'];
-		
-		function changeColor(){
-			$('#box').css('background-color', colors[0]);
-			colors = colors.reverse();
-		}
+
+function changeColor(color){
+	$('#box').css('background-color', color);
+}
 		
 
 var socket = io.connect();
-  socket.on('mess', function (mess) {
-    console.log(mess);
-    changeColor();
+  socket.on('colorSwitch', function (data) {
+    console.log(data.color);
+    changeColor(data.color);
   });
-
