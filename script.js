@@ -14,9 +14,9 @@ $(document).ready(
 		}
 		
 
-var socket = io.connect('http://localhost');
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
+var socket = io.connect();
+  socket.on('mess', function (mess) {
+    console.log(mess);
+    changeColor();
   });
 
