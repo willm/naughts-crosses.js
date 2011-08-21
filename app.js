@@ -16,10 +16,8 @@ app.get('/', function(req, res){
 
 app.listen(3000);
 
-io.on('connection', function (client) {
-  client.emit('news', { hello: 'world' });
-  client.on('my other event', function (data) {
-    console.log(data);
-  });
-});
-
+setInterval(
+	function(){
+		io.sockets.emit("mess", "boo");
+	},
+	2000);
