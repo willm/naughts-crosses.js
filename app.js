@@ -1,5 +1,6 @@
 var app = require('express').createServer(),
-	io = require('socket.io').listen(app),
+	nowjs = require("now"),
+	everyone = nowjs.initialize(app),
 	colors = ['green','red'];
 
 require('jade');
@@ -15,12 +16,8 @@ app.get('/', function(req, res){
 
 app.listen(3000);
 
-io.sockets.on('connection', function (socket) {
-  socket.on('click', function (data) {
-  	socket.emit('colorSwitch', {"color" : colors[0]});
-	socket.broadcast.emit('colorSwitch', {"color" : colors[0]});
-colors.reverse();
-    console.log(colors[0]);
-    
-  });
-});
+everyone.now.clicked = function () {
+  	everyone.now.colorSwitch(colors[0]);	
+	colors.reverse();
+    	console.log(colors[0]);
+};
