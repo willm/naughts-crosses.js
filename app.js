@@ -18,7 +18,9 @@ app.listen(3000);
 io.sockets.on('connection', function (socket) {
   socket.on('click', function (data) {
   	socket.emit('colorSwitch', {"color" : colors[0]});
+	socket.broadcast.emit('colorSwitch', {"color" : colors[0]});
+colors.reverse();
     console.log(colors[0]);
-    colors.reverse();
+    
   });
 });
