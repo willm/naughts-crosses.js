@@ -16,8 +16,8 @@ app.get('/', function(req, res){
 
 app.listen(3000);
 
-everyone.now.clicked = function () {
-  	everyone.now.colorSwitch(colors[0]);	
+everyone.now.clicked = function (id) {
+  	everyone.now.colorSwitch(colors[0],id);	
 	colors.reverse();
     	console.log(colors[0]);
 };
