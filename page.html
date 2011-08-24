@@ -3,28 +3,32 @@
 	<head>
 		<script src="lib/jquery-1.6.2.min.js"></script>
 		<script src="http://localhost:3000/nowjs/now.js"></script>
+		<script src="lib/raphael-min.js"></script>
 		<script src="script.js"></script>
+		
 		
 		<link rel="stylesheet" href="style.css"/>
 	</head>
 	<body>
-		<table>
-			<tr>
-				<td><div class="box" id="tl"></div></td>
-				<td><div class="box" id="tc"></div></td>
-				<td><div class="box" id="tr"></div></td>
-			</tr>
-			<tr>
-				<td><div class="box" id="ml"></div></td>
-				<td><div class="box" id="mc"></div></td>
-				<td><div class="box" id="mr"></div></td>
-			</tr>
-			<tr>
-				<td><div class="box" id="bl"></div></td>
-				<td><div class="box" id="bm"></div></td>
-				<td><div class="box" id="br"></div></td>
-			</tr>
-		</table>
-		<div id="client_count"></div>
+		<div id="css-version">
+			<table>
+				<tr>
+					<td><div class="box" id="tl"></div></td>
+					<td><div class="box" id="tc"></div></td>
+					<td><div class="box" id="tr"></div></td>
+				</tr>
+				<tr>
+					<td><div class="box" id="ml"></div></td>
+					<td><div class="box" id="mc"></div></td>
+					<td><div class="box" id="mr"></div></td>
+				</tr>
+				<tr>
+					<td><div class="box" id="bl"></div></td>
+					<td><div class="box" id="bm"></div></td>
+					<td><div class="box" id="br"></div></td>
+				</tr>
+			</table>
+		</div>
+		<div id="raphael"></div>
 	</body>
 </html>
