@@ -6,8 +6,17 @@ $(function(){
 		console.log(color);
 		$('#'+id).css('background-color', color);
 	};
+	
+	now.colorSwitchR =function(color, id) {
+	console.log("hi" + id);
+		for (var i =0; i<grid.length; i++) {
+		  if(grid[i].node.id === id){
+		  	grid[i].attr("fill", color);
+		  };
+		}
+	};
+	
 	$('.box').click(function(evt){
-					console.log(evt.currentTarget.id);
 					now.clicked(evt.currentTarget.id);
 					});	
 	
@@ -22,22 +31,18 @@ $(function(){
 				rect = paper.rect(i, j,200,200);
 				rect.attr("stroke","black");
 				rect.attr("fill","white");
-				rect.node.onclick=function(evt){cross(evt);};
-				grid.push(rect);				
+				$(rect.node).attr("id", i+":"+j);
+				console.log(rect.node);
+				grid.push(rect);
+				$(rect.node).click(function(evt){
+					console.log(evt.currentTarget.id);
+					now.clickedR(evt.currentTarget.id);
+					});	
+								
 			}
 		}
-		console.log(grid[0]);
-		console.log(grid[4].attrs);
-
 	})();
 
-});
-	
-	function cross(evt){
-		
-		  console.log(evt);
-		evt.target.raphael.attr("fill","blue");
-	}
-
+});	
 
 

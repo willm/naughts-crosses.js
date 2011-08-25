@@ -21,3 +21,9 @@ everyone.now.clicked = function (id) {
 	colors.reverse();
     	console.log(colors[0]);
 };
+
+everyone.now.clickedR = function (id) {
+  	everyone.now.colorSwitchR(colors[0],id);	
+	colors.reverse();
+    	console.log(colors[0]);
+};
