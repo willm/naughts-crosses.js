@@ -1,7 +1,7 @@
 var app = require('express').createServer(),
 	nowjs = require("now"),
 	everyone = nowjs.initialize(app),
-	colors = ['green','red'];
+	types= ["X","0"];
 
 require('jade');
 app.set('view options', {layout: false});
@@ -16,14 +16,8 @@ app.get('/', function(req, res){
 
 app.listen(3000);
 
-everyone.now.clicked = function (id) {
-  	everyone.now.colorSwitch(colors[0],id);	
-	colors.reverse();
-    	console.log(colors[0]);
-};
-
 everyone.now.clickedR = function (id) {
-  	everyone.now.colorSwitchR(colors[0],id);	
-	colors.reverse();
-    	console.log(colors[0]);
+  	everyone.now.colorSwitchR(types[0],id);	
+	types.reverse();
+    	console.log(types[0]);
 };
