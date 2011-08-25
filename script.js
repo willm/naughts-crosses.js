@@ -21,18 +21,22 @@ $(function(){
 			for(var j =0; j< height; j+=100){
 				rect = paper.rect(i, j,200,200);
 				rect.attr("stroke","black");
-				rect.node.onclick=function(){cross();};
-				grid.push(rect);
-				
+				rect.attr("fill","white");
+				rect.node.onclick=function(evt){cross(evt);};
+				grid.push(rect);				
 			}
 		}
 		console.log(grid[0]);
 		console.log(grid[4].attrs);
+
 	})();
+
 });
 	
-	function cross(){
-		  console.log("hi");
+	function cross(evt){
+		
+		  console.log(evt);
+		evt.target.raphael.attr("fill","blue");
 	}
 
 
