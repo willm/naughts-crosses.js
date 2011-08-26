@@ -2,22 +2,21 @@ $(function(){
 
 	var grid =[],
 			width = 300,
-			height = 300,
+			height = 100,
+			fontSize = width <= height ? width/3 : height/3,
 			paper = Raphael("raphael",width,height);	
 	
-	now.colorSwitch =function(type, id) {
-	console.log(type);
+	now.commitSquare =function(type, id) {
 		for (var i =0; i<grid.length; i++) {
 		  if(grid[i].id === id){
 		  	if (grid[i].played === false) {
 		  		grid[i].played=true;
-			  	console.log(grid[i].getBBox().x);
 			  	paper.text(
-					  		grid[i].getBBox().x+50,
-					  		grid[i].getBBox().y+50,
+					  		grid[i].getBBox().x+width/6,
+					  		grid[i].getBBox().y+height/6,
 					  		type
 			  			)
-			  			.attr({ "font-size": 100});
+			  			.attr({ "font-size": fontSize});
 	  			};
 			};
 		}
@@ -27,9 +26,9 @@ $(function(){
 		var 
 			rect;
 			
-		for(var i =0; i< width; i+=100){
-			for(var j =0; j< height; j+=100){
-				rect = paper.rect(i, j,200,200);
+		for(var i =0; i< width; i+=width/3){
+			for(var j =0; j< height; j+=height/3){
+				rect = paper.rect(i, j,width/3,height/3);
 				rect.attr("stroke","black");
 				rect.attr("fill","white");
 				rect.played = false;

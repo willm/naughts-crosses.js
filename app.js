@@ -17,7 +17,7 @@ app.get('/', function(req, res){
 app.listen(3000);
 
 everyone.now.clicked = function (id) {
-  	everyone.now.colorSwitch(types[0],id);	
+  	everyone.now.commitSquare(types[0],id);	
 	types.reverse();
     	console.log(types[0]);
 };
