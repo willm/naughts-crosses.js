@@ -5,22 +5,25 @@ $(function(){
 			height = 300,
 			paper = Raphael("raphael",width,height);	
 	
-	now.colorSwitchR =function(type, id) {
+	now.colorSwitch =function(type, id) {
 	console.log(type);
 		for (var i =0; i<grid.length; i++) {
-		  if(grid[i].node.id === id){
-		  	console.log(grid[i].getBBox().x);
-		  	paper.text(
-				  		grid[i].getBBox().x+50,
-				  		grid[i].getBBox().y+50,
-				  		type
-		  			)
-		  			.attr({ "font-size": 100});
-		  };
+		  if(grid[i].id === id){
+		  	if (grid[i].played === false) {
+		  		grid[i].played=true;
+			  	console.log(grid[i].getBBox().x);
+			  	paper.text(
+					  		grid[i].getBBox().x+50,
+					  		grid[i].getBBox().y+50,
+					  		type
+			  			)
+			  			.attr({ "font-size": 100});
+	  			};
+			};
 		}
 	};
 	
-	(function raphaelVersion (){
+	(function drawGrid (){
 		var 
 			rect;
 			
@@ -29,11 +32,11 @@ $(function(){
 				rect = paper.rect(i, j,200,200);
 				rect.attr("stroke","black");
 				rect.attr("fill","white");
+				rect.played = false;
 				console.log(rect.id);
-				rect.node.id = i+":"+j;//unique id for each square
 				$(rect.node).click(function(evt){
-					console.log(evt.currentTarget.id);
-					now.clickedR(evt.currentTarget.id);
+					console.log(evt.currentTarget.raphael.id);
+					now.clicked(evt.currentTarget.raphael.id);
 					});
 				grid.push(rect);		
 			}
